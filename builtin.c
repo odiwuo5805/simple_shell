@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * _myexit - exits the shell
  * @info: Structure containing potential arguments. Used to maintain
@@ -37,11 +36,11 @@ int _myexit(info_t *info)
  */
 int _mycd(info_t *info)
 {
-	char *s, *dir, buffer[1024];
+	char *z, *dir, buffer[1024];
 	int chdir_ret;
 
-	s = getcwd(buffer, 1024);
-	if (!s)
+	z = getcwd(buffer, 1024);
+	if (!z)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv[1])
 	{
@@ -56,7 +55,7 @@ int _mycd(info_t *info)
 	{
 		if (!_getenv(info, "OLDPWD="))
 		{
-			_puts(s);
+			_puts(z);
 			_putchar('\n');
 			return (1);
 		}
@@ -92,6 +91,6 @@ int _myhelp(info_t *info)
 	arg_array = info->argv;
 	_puts("help call works. Function not yet implemented \n");
 	if (0)
-		_puts(*arg_array); 
+		_puts(*arg_array); /* temp att_unused workaround */
 	return (0);
 }
