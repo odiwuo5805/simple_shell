@@ -11,7 +11,7 @@ void exitt(char **arv)
 	if (arv[1])
 	{
 		w = _atoi(arv[1]);
-		if (n <= -1)
+		if (w <= -1)
 			w = 2;
 		freearv(arv);
 		exit(w);

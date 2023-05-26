@@ -118,7 +118,7 @@ char *_which(char *filename, list_path *head)
 	{
 
 		strin = concat_all(tmp->dir, "/", filename);
-		if (stat(string, &st) == 0)
+		if (stat(strin, &st) == 0)
 		{
 			return (strin);
 		}
