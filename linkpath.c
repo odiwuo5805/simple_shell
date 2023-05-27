@@ -8,26 +8,26 @@
  */
 char *_getenv(const char *name)
 {
-	int i, j;
+	int k, j;
 	char *value;
 
 	if (!name)
 		return (NULL);
-	for (i = 0; environ[i]; i++)
+	for (k = 0; environ[k]; k++)
 	{
 		j = 0;
-		if (name[j] == environ[i][j])
+		if (name[j] == environ[k][j])
 		{
 			while (name[j])
 			{
-				if (name[j] != environ[i][j])
+				if (name[j] != environ[k][j])
 					break;
 
 				j++;
 			}
 			if (name[j] == '\0')
 			{
-				value = (environ[i] + j + 1);
+				value = (environ[k] + j + 1);
 				return (value);
 			}
 		}
