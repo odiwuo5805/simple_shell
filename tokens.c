@@ -22,7 +22,7 @@ char **tokenize(const char *str)
 
 	for (count = 0; *(str += quote_state_len(str, QUOTE_NONE)); ++count)
 	{
-		tok = str;
+		tk = str;
 
 		while (*str && (state = quote_state(*str)) != QUOTE_NONE)
 		{
@@ -35,7 +35,7 @@ char **tokenize(const char *str)
 				++str;
 		}
 
-		tokens[count] = _memdup(tok, str - tk + 1);
+		tokens[count] = _memdup(tk, str - tk + 1);
 		if (!tokens[count])
 		{
 			free_tokens(&tokens);
@@ -102,12 +102,12 @@ char **tokenize_noquote(const char *str)
 		if (!*str)
 			break;
 
-		tok = str;
+		tk = str;
 		do {
 			++str;
 		} while (*str && !_isspace(*str));
 
-		tokens[count] = _memdup(tok, str - tk + 1);
+		tokens[count] = _memdup(tk, str - tk + 1);
 		if (!tokens[count])
 		{
 			free_tokens(&tokens);
