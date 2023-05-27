@@ -51,7 +51,7 @@ int main(void)
 	char *buff = NULL, *value, *pathname, **arv;
 	size_t size = 0;
 	list_path *head = '\0';
-	void (*f)(char **);
+	void (*g)(char **);
 
 	signal(SIGINT, sig_handler);
 	while (len != EOF)
@@ -67,11 +67,11 @@ int main(void)
 			value = _getenv("PATH");
 			head = linkpath(value);
 			pathname = _which(arv[0], head);
-			f = checkbuild(arv);
-			if (f)
+			g = checkbuild(arv);
+			if (g)
 			{
 				free(buff);
-				f(arv);
+				g(arv);
 			}
 			else if (!pathname)
 				execute(arv);
